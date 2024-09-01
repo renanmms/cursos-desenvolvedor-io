@@ -23,7 +23,15 @@ namespace PrimeiraAPP.Controllers
                 Avaliacao = 5
             };
 
-            Db.Alunos.Add(aluno);
+            // Db.Alunos.Add(aluno);
+            // Db.SaveChanges();
+
+            var alunoChange = Db.Alunos.FirstOrDefault(a => a.Nome == "Renan");
+            // Db.Alunos.Remove(alunoChange);
+            // Db.SaveChanges();
+
+            alunoChange.Nome = "Renan Martins";
+            Db.Alunos.Update(alunoChange);
             Db.SaveChanges();
 
             return Content("");
