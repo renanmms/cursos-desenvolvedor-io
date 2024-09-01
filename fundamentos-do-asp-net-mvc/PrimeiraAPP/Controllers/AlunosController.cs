@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using PrimeiraAPP.Data;
 using PrimeiraAPP.Models;
 
@@ -14,7 +15,7 @@ namespace PrimeiraAPP.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            return View(_context.Alunos.ToList());
         }
 
         public IActionResult Create()
@@ -30,6 +31,30 @@ namespace PrimeiraAPP.Controllers
             await _context.SaveChangesAsync();
 
             return View();
+        }
+
+        public async Task<IActionResult> Edit(int id)
+        {
+            var aluno = await _context.Alunos.FindAsync(id);
+
+            return View(aluno);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,DataNascimento,Email,EmailConfirmacao,Avaliacao,Ativo")] Aluno aluno)
+        {
+            _context.Update(aluno);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Index));
+        }
+
+        public async Task<IActionResult> Details(int id)
+        {
+            var aluno = await _context.Alunos.FindAsync(id);
+
+            return View(aluno);
         }
     }
 }
