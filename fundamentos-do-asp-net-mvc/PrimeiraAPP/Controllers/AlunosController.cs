@@ -1,10 +1,17 @@
 using Microsoft.AspNetCore.Mvc;
+using PrimeiraAPP.Data;
 using PrimeiraAPP.Models;
 
 namespace PrimeiraAPP.Controllers
 {
     public class AlunosController : Controller
     {
+        private readonly AppDbContext _context;
+        public AlunosController(AppDbContext context)
+        {
+            _context = context;
+        }
+
         public IActionResult Index()
         {
             return View();
@@ -19,6 +26,9 @@ namespace PrimeiraAPP.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Nome,DataNascimento,Email,EmailConfirmacao,Avaliacao,Ativo")] Aluno aluno)
         {
+            _context.Alunos.Add(aluno);
+            await _context.SaveChangesAsync();
+
             return View();
         }
     }
