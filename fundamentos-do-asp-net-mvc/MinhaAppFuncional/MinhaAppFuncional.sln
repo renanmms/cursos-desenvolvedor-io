@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{443C6B1F-F7A1-416B-B728-85463F19A7FF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppMvcFuncional", "src\AppMvcFuncional\AppMvcFuncional.csproj", "{FFBCCF5F-5F2D-47D6-94C1-F4BE411EEEC2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FFBCCF5F-5F2D-47D6-94C1-F4BE411EEEC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFBCCF5F-5F2D-47D6-94C1-F4BE411EEEC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFBCCF5F-5F2D-47D6-94C1-F4BE411EEEC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFBCCF5F-5F2D-47D6-94C1-F4BE411EEEC2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{FFBCCF5F-5F2D-47D6-94C1-F4BE411EEEC2} = {443C6B1F-F7A1-416B-B728-85463F19A7FF}
+	EndGlobalSection
+EndGlobal
