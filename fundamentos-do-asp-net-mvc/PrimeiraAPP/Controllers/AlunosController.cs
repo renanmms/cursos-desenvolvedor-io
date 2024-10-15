@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using PrimeiraAPP.Data;
 using PrimeiraAPP.Models;
 
@@ -27,10 +26,15 @@ namespace PrimeiraAPP.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Nome,DataNascimento,Email,EmailConfirmacao,Avaliacao,Ativo")] Aluno aluno)
         {
-            _context.Alunos.Add(aluno);
-            await _context.SaveChangesAsync();
+            if(ModelState.IsValid)
+            {
+                _context.Alunos.Add(aluno);
+                await _context.SaveChangesAsync();
 
-            return View();
+                return RedirectToAction(nameof(Index));
+            }
+
+            return View(aluno);
         }
 
         public async Task<IActionResult> Edit(int id)
@@ -44,10 +48,22 @@ namespace PrimeiraAPP.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,DataNascimento,Email,EmailConfirmacao,Avaliacao,Ativo")] Aluno aluno)
         {
-            _context.Update(aluno);
-            await _context.SaveChangesAsync();
+            if(id != aluno.Id)
+            {
+                return NotFound();
+            }
 
-            return RedirectToAction(nameof(Index));
+            ModelState.Remove("EmailConfirmacao");
+
+            if(ModelState.IsValid)
+            {
+                _context.Update(aluno);
+                await _context.SaveChangesAsync();
+
+                return RedirectToAction(nameof(Index));
+            }
+
+            return View(aluno);
         }
 
         public async Task<IActionResult> Details(int id)
