@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using AppMvcFuncional.Data;
 using AppMvcFuncional.Models;
 
-namespace AppMvcFuncional
+namespace AppMvcFuncional.Controllers
 {
     public class AlunosController : Controller
     {
